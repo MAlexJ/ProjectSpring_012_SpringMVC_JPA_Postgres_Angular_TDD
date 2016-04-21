@@ -27,15 +27,32 @@
     <!-- CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"/>
 
+    <!-- AngularJS: lib -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/lib/angular.min.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/resources/js/lib/angular-route.min.js"></script>
+
+    <!-- AngularJS: Module -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/module/module.js"></script>
+    <!-- AngularJS: Controller -->
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/resources/js/controller/controller.js"></script>
+    <!-- AngularJS: Service -->
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/resources/js/service/service.js"></script>
+    <!-- AngularJS: Directive -->
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/resources/js/directive/directive.js"></script>
+
+
 </head>
-<body>
+<body ng-app="myApp">
 <jsp:include page="navbar.jsp" flush="true"/>
 <main>
     <div class="container">
-        <h5>LaLaLa</h5>
+       <ng-view></ng-view>
     </div>
 </main>
-
 <jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>
