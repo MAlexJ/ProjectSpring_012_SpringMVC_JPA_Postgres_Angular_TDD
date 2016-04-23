@@ -18,7 +18,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-}
+    }
 
     // http://javastudy.ru/spring-mvc/spring-mvc-viewresolver/
     //  ViewResolver — интерфейс, реализуемый объектами, которые способны находить представления View по имени View Name.

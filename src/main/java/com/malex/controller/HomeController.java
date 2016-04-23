@@ -4,44 +4,43 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/")
 public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String indexGet(Model model) {
-        model.addAttribute("nav", "home");
+    public String indexGet() {
         return "index";
     }
 
+
     @RequestMapping(path = "/home", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    String homeGet() {
+    public String homeGet() {
         return "home";
     }
 
     @RequestMapping(path = "/create", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    String createGet() {
+    public String createGet() {
         return "create";
     }
 
     @RequestMapping(path = "/update", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    String updateGet() {
+    public String updateGet() {
         return "update";
     }
 
     @RequestMapping(path = "/delete", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    String deleteGet() {
+    public String deleteGet() {
         return "delete";
     }
+
+    // Model model
+    @RequestMapping(path = "/simpleModel", method = RequestMethod.GET)
+    public String simpleModelGet(Model model) {
+        model.addAttribute("nav", "home");
+        return "home";
+    }
+
 
 }

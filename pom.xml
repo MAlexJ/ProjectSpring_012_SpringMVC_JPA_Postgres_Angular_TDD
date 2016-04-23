@@ -179,6 +179,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Mockito  -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.0.44-beta</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Spring-test-dbunit  -->
         <dependency>
             <groupId>com.github.springtestdbunit</groupId>

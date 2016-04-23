@@ -4,7 +4,7 @@
     <div class="nav-wrapper light-blue darken-2">
         <div class="container">
             <a href="#" class="brand-logo center">Logo</a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <ul id="nav-mobile" class="left hide-on-med-and-down" bs-active-link="">
                 <li><a href="#/home">Home</a></li>
                 <li><a href="#/create">Create</a></li>
                 <li><a href="#/update">Update</a></li>

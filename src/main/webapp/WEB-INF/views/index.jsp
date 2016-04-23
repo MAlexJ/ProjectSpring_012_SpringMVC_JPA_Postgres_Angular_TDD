@@ -49,8 +49,10 @@
 <body ng-app="myApp">
 <jsp:include page="navbar.jsp" flush="true"/>
 <main>
-    <div class="container">
-       <ng-view></ng-view>
+    <div class="section white">
+        <div class="container">
+            <ng-view></ng-view>
+        </div>
     </div>
 </main>
 <jsp:include page="footer.jsp" flush="true"/>
