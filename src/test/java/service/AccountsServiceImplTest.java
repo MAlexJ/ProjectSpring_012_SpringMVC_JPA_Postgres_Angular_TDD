@@ -74,15 +74,17 @@ public class AccountsServiceImplTest extends BaseConfigTest {
         RolesEntity roleAdmin = new RolesEntity();
         roleAdmin.setRole(Role.ADMIN);
         roleAdmin.setAccount(expectEntity);
+        rolesService.save(roleAdmin);
 
         RolesEntity roleUser = new RolesEntity();
         roleUser.setRole(Role.USER);
         roleUser.setAccount(expectEntity);
+        rolesService.save(roleUser);
 
         // when
         AccountsEntity actualEntity = accountsService.findById(expectEntity.getId());
 
-        System.err.println(actualEntity.getRoles());
+        System.err.println(actualEntity);
         //then
         assertNotNull(actualEntity);
         assertEquals(expectEntity, actualEntity);
