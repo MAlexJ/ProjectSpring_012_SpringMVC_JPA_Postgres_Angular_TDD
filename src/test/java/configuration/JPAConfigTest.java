@@ -36,6 +36,10 @@ class JPAConfigTest {
     // Hibernate
     @Value("${data.showsql}")
     private boolean showSql;
+    @Value("${data.format_sql}")
+    private boolean formatSql;
+    @Value("${data.use_sql_comments}")
+    private boolean useSqlComments;
     @Value("${data.generateddl}")
     private boolean generateDdl;
     @Value("${data.dialect}")
@@ -72,6 +76,9 @@ class JPAConfigTest {
         Properties jpaProperties = new Properties();
         jpaProperties.setProperty("hibernate.hbm2ddl.auto", hbm2ddlAuto);
         jpaProperties.setProperty("hibernate.dialect", dialect);
+        jpaProperties.setProperty("hibernate.show_sql", String.valueOf(showSql));
+        jpaProperties.setProperty("hibernate.format_sql", String.valueOf(formatSql));
+        jpaProperties.setProperty("hibernate.use_sql_comments", String.valueOf(useSqlComments));
         entityManagerFactory.setJpaProperties(jpaProperties);
         return entityManagerFactory;
     }
