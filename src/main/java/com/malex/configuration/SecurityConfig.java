@@ -16,6 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("admin").password("1111").roles("ADMIN");  // TODO inMemoryAuthentication
     }
 
+    //.csrf() is optional, enabled by default, if using WebSecurityConfigurerAdapter constructor
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
