@@ -1,55 +1,50 @@
 package service;
 
-import com.malex.model.AccountsEntity;
-import com.malex.model.RolesEntity;
+import com.malex.model.AccountEntity;
+import com.malex.model.RoleEntity;
 import com.malex.model.enums.Role;
-import com.malex.service.AccountsService;
-import com.malex.service.RolesService;
+import com.malex.service.AccountService;
+import com.malex.service.RoleService;
 import configuration.BaseConfigTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertTrue;
 
-public class AccountsServiceImplTest extends BaseConfigTest {
-
-    @Autowired
-    private AccountsService accountsService;
+public class AccountServiceImplTest extends BaseConfigTest {
 
     @Autowired
-    private RolesService rolesService;
+    private AccountService accountsService;
+
+    @Autowired
+    private RoleService rolesService;
 
     /**
      * TEST:
-     * 1. AccountsEntity save(AccountsEntity entity);
-     * 2. AccountsEntity update(AccountsEntity entity);
+     * 1. AccountEntity save(AccountEntity entity);
+     * 2. AccountEntity update(AccountEntity entity);
      * 3. void delete(Long id);
-     * 4. AccountsEntity findById(Long id);
-     * 5. List<AccountsEntity> findAll();
+     * 4. AccountEntity findById(Long id);
+     * 5. List<AccountEntity> findAll();
      */
 
     /**
      * TEST:
-     * 1. AccountsEntity save(AccountsEntity entity);
+     * 1. AccountEntity save(AccountEntity entity);
      */
     @Test
     @Rollback
     public void test_save() {
         // given
-        AccountsEntity entity = new AccountsEntity();
+        AccountEntity entity = new AccountEntity();
         entity.setDate(new Date());
         entity.setUserName("Adminka");
         entity.setPassword("26458sss");
 
         // when
-        AccountsEntity actualEntity = accountsService.save(entity);
+        AccountEntity actualEntity = accountsService.save(entity);
 
         //then
         assertNotNull(actualEntity);
@@ -58,33 +53,34 @@ public class AccountsServiceImplTest extends BaseConfigTest {
 
     /**
      * TEST:
-     * 1. AccountsEntity save(AccountsEntity entity);
+     * 1. AccountEntity save(AccountEntity entity);
      */
     @Test
-    @Rollback
+    @Rollback(value = false)
     public void test_save_with_roles() {
         // given
-        AccountsEntity entity = new AccountsEntity();
+        AccountEntity entity = new AccountEntity();
         entity.setDate(new Date());
         entity.setUserName("Adminka");
         entity.setPassword("26458sss");
-        AccountsEntity expectEntity = accountsService.save(entity);
+        AccountEntity expectEntity = accountsService.save(entity);
 
 
-        RolesEntity roleAdmin = new RolesEntity();
+        RoleEntity roleAdmin = new RoleEntity();
         roleAdmin.setRole(Role.ADMIN);
         roleAdmin.setAccount(expectEntity);
         rolesService.save(roleAdmin);
 
-        RolesEntity roleUser = new RolesEntity();
+        RoleEntity roleUser = new RoleEntity();
         roleUser.setRole(Role.USER);
         roleUser.setAccount(expectEntity);
         rolesService.save(roleUser);
 
         // when
-        AccountsEntity actualEntity = accountsService.findById(expectEntity.getId());
+        AccountEntity actualEntity = accountsService.findById(expectEntity.getId());
 
         System.err.println(actualEntity);
+
         //then
         assertNotNull(actualEntity);
         assertEquals(expectEntity, actualEntity);
@@ -92,7 +88,7 @@ public class AccountsServiceImplTest extends BaseConfigTest {
 
     /**
      * TEST:
-     * 2. AccountsEntity update(AccountsEntity entity);
+     * 2. AccountEntity update(AccountEntity entity);
      */
     @Test
     @Rollback
@@ -126,14 +122,14 @@ public class AccountsServiceImplTest extends BaseConfigTest {
 
     /**
      * TEST:
-     * 4. AccountsEntity findById(Long id);
+     * 4. AccountEntity findById(Long id);
      */
     @Test
     @Rollback
     public void test_findById() {
         // given
 
-
+        System.err.println(accountsService.findById(7L));
         // when
 
 
@@ -143,7 +139,7 @@ public class AccountsServiceImplTest extends BaseConfigTest {
 
     /**
      * TEST:
-     * 5. List<AccountsEntity> findAll();
+     * 5. List<AccountEntity> findAll();
      */
     @Test
     @Rollback
@@ -158,5 +154,25 @@ public class AccountsServiceImplTest extends BaseConfigTest {
 
 
     }
+
+    /**
+     * TEST:
+     * 6. List<AccountEntity> findAll();
+     */
+    @Test
+    @Rollback
+    public void test_findAccountWhereNameGt() {
+
+        // given
+
+        // when
+        System.err.println(accountsService.findAccountWhereNameGt("alex","1111").getRoles().get(0).getRole().toString());
+
+        //then
+
+
+    }
+
+
 
 }

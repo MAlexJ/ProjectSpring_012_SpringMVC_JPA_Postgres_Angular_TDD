@@ -1,26 +1,26 @@
 package com.malex.service.impl;
 
-import com.malex.model.RolesEntity;
-import com.malex.repository.RolesRepository;
-import com.malex.service.RolesService;
+import com.malex.model.RoleEntity;
+import com.malex.repository.RoleRepository;
+import com.malex.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class RolesServiceImpl implements RolesService {
+public class RoleServiceImpl implements RoleService {
 
     @Autowired
-    private RolesRepository repository;
+    private RoleRepository repository;
 
     @Override
-    public RolesEntity save(RolesEntity entity) {
+    public RoleEntity save(RoleEntity entity) {
         return repository.saveAndFlush(entity);
     }
 
     @Override
-    public RolesEntity update(RolesEntity entity) {
+    public RoleEntity update(RoleEntity entity) {
         return repository.saveAndFlush(entity);
     }
 
@@ -30,12 +30,12 @@ public class RolesServiceImpl implements RolesService {
     }
 
     @Override
-    public RolesEntity findById(Long id) {
+    public RoleEntity findById(Long id) {
         return repository.findOne(id);
     }
 
     @Override
-    public List<RolesEntity> findAll() {
+    public List<RoleEntity> findAll() {
         return repository.findAll();
     }
 }

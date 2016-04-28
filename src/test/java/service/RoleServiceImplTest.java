@@ -1,8 +1,8 @@
 package service;
 
-import com.malex.model.RolesEntity;
+import com.malex.model.RoleEntity;
 import com.malex.model.enums.Role;
-import com.malex.service.RolesService;
+import com.malex.service.RoleService;
 import configuration.BaseConfigTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,33 +15,33 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
 
-public class RolesServiceImplTest extends BaseConfigTest {
+public class RoleServiceImplTest extends BaseConfigTest {
 
     @Autowired
-    private RolesService service;
+    private RoleService service;
 
     /**
      TEST:
-     1. RolesEntity save(RolesEntity entity);
-     2. RolesEntity update(RolesEntity entity);
+     1. RoleEntity save(RoleEntity entity);
+     2. RoleEntity update(RoleEntity entity);
      3. void delete(Long id);
-     4. RolesEntity findById(Long id);
-     5. List<RolesEntity> findAll();
+     4. RoleEntity findById(Long id);
+     5. List<RoleEntity> findAll();
      */
 
     /**
      * TEST:
-     * 1. RolesEntity save(RolesEntity entity);
+     * 1. RoleEntity save(RoleEntity entity);
      */
     @Test
     @Rollback
     public void test_save() {
         // given
-        RolesEntity entity = new RolesEntity();
+        RoleEntity entity = new RoleEntity();
         entity.setRole(Role.ADMIN);
 
         // when
-        RolesEntity actualEntity = service.save(entity);
+        RoleEntity actualEntity = service.save(entity);
 
         //then
         assertNotNull(actualEntity);
@@ -50,19 +50,19 @@ public class RolesServiceImplTest extends BaseConfigTest {
 
     /**
      * TEST:
-     * 2. RolesEntity update(RolesEntity entity);
+     * 2. RoleEntity update(RoleEntity entity);
      */
     @Test
     @Rollback
     public void test_update() {
         // given
-        RolesEntity entity = new RolesEntity();
+        RoleEntity entity = new RoleEntity();
         entity.setRole(Role.ADMIN);
-        RolesEntity expectEntity = service.save(entity);
+        RoleEntity expectEntity = service.save(entity);
 
         // when
         expectEntity.setRole(Role.USER);
-        RolesEntity actualEntity = service.save(expectEntity);
+        RoleEntity actualEntity = service.save(expectEntity);
 
         //then
         assertNotNull(actualEntity);
@@ -77,7 +77,7 @@ public class RolesServiceImplTest extends BaseConfigTest {
     @Rollback
     public void test_delete() {
         // given
-        RolesEntity entity = new RolesEntity();
+        RoleEntity entity = new RoleEntity();
         entity.setRole(Role.ADMIN);
         service.save(entity);
 
@@ -90,18 +90,18 @@ public class RolesServiceImplTest extends BaseConfigTest {
 
     /**
      * TEST:
-     * 4. RolesEntity findById(Long id);
+     * 4. RoleEntity findById(Long id);
      */
     @Test
     @Rollback
     public void test_findById() {
         // given
-        RolesEntity entity = new RolesEntity();
+        RoleEntity entity = new RoleEntity();
         entity.setRole(Role.ADMIN);
-        RolesEntity expectEntity = service.save(entity);
+        RoleEntity expectEntity = service.save(entity);
 
         // when
-        RolesEntity actualEntity = service.findById(expectEntity.getId());
+        RoleEntity actualEntity = service.findById(expectEntity.getId());
 
         //then
         assertNotNull(actualEntity);
@@ -110,22 +110,22 @@ public class RolesServiceImplTest extends BaseConfigTest {
 
     /**
      * TEST:
-     * 5. RolesEntity findAll(Long id);
+     * 5. RoleEntity findAll(Long id);
      */
     @Test
     @Rollback
     public void test_finAll() {
-        List<RolesEntity> expectList = new ArrayList<>();
+        List<RoleEntity> expectList = new ArrayList<>();
 
         // given
         for (int i = 0; i < 5; i++) {
-            RolesEntity entity = new RolesEntity();
+            RoleEntity entity = new RoleEntity();
             entity.setRole(Role.ADMIN);
             expectList.add(entity);
             service.save(entity);
         }
         // when
-        List<RolesEntity> actualList = service.findAll();
+        List<RoleEntity> actualList = service.findAll();
 
         //then
         assertNotNull(actualList);

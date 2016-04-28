@@ -4,6 +4,7 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
@@ -17,6 +18,10 @@ public class AppInitializer implements WebApplicationInitializer {   // WebAppli
     public void onStartup(ServletContext servletContext) throws ServletException {
         WebApplicationContext context = getContext();
         servletContext.addListener(new ContextLoaderListener(context));
+
+        servletContext.addFilter("springSecurityFilterChain",              //TODO 1 Security
+                new DelegatingFilterProxy("springSecurityFilterChain"))    //TODO 2 Security
+                .addMappingForUrlPatterns(null, false, "/*");              //TODO 3 Security  filter - /*
 
         /** http://javastudy.ru/spring-mvc/spring-mvc-basic/ */
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("DispatcherServlet", new DispatcherServlet(context)); //Spring MVC построен вокруг центрального сервлета, который распределяет запросы по контроллерам, а также предоставляет другие широкие возможности при разработке веб приложений.

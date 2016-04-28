@@ -11,10 +11,10 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@ToString
+@ToString(exclude = "account")
 @Entity
-@Table(name = "roles")
-public class RolesEntity extends BaseEntity {
+@Table(name = "role")
+public class RoleEntity extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
@@ -22,5 +22,5 @@ public class RolesEntity extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "account_id")
-    private AccountsEntity account;
+    private AccountEntity account;
 }
