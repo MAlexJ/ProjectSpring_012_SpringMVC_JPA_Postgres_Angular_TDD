@@ -32,3 +32,7 @@ https://css-tricks.com/removing-the-dotted-outline/
 
 8. AngularJs navBar
 http://jsfiddle.net/8mcedv3b/
+
+
+9. Вставка html в angularjs
+http://ru.stackoverflow.com/questions/362250/%D0%92%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B0-html-%D0%B2-angularjs
