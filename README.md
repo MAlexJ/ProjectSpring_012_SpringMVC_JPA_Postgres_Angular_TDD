@@ -36,3 +36,27 @@ http://jsfiddle.net/8mcedv3b/
 
 9. Вставка html в angularjs
 http://ru.stackoverflow.com/questions/362250/%D0%92%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B0-html-%D0%B2-angularjs
+
+10.How to respond with HTTP 400 error in a Spring MVC @ResponseBody method returning String?
+http://stackoverflow.com/questions/16232833/how-to-respond-with-http-400-error-in-a-spring-mvc-responsebody-method-returnin
+
+
+I m using this in my spring boot application
+
+@RequestMapping(value = "/matches/{matchId}", produces = "application/json")
+@ResponseBody
+public @ResponseBody ResponseEntity<?> match(@PathVariable String matchId, @RequestBody String body,
+            HttpServletRequest request, HttpServletResponse response) {
+
+    Product p ;
+     try{
+       Product p = service.getproduct(request.getProductId());
+      }
+     catch(Exception ex){
+       return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+    }
+
+     return new ResponseEntity<product,HttpStatus.OK);
+
+}
+
