@@ -60,3 +60,6 @@ public @ResponseBody ResponseEntity<?> match(@PathVariable String matchId, @Requ
 
 }
 
+11. spring-mvc-test auto rollback transactions configured with AOP xml on Service layer
+http://stackoverflow.com/questions/24379980/spring-mvc-test-auto-rollback-transactions-configured-with-aop-xml-on-service-la
+
